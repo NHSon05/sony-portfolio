@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio cá nhân - Front-end Developer & UX/UI Designer" />
+  <title>Personal Portfolio</title>
+
+  <!-- Có thể đổi font tại đây -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f2f3f5;
+      --surface: rgba(255,255,255,.72);
+      --surface-solid: #ffffff;
+      --text: #101114;
+      --muted: #6c7078;
+      --line: rgba(15,17,20,.12);
+      --primary: #3448d9;
+      --purple: #9a5ad8;
+      --coral: #ff876f;
+      --orange: #ff8a24;
+      --dark: #303236;
+      --radius-xl: 34px;
+      --radius-lg: 25px;
+      --radius-md: 18px;
+      --shadow: 0 22px 60px rgba(31,36,48,.12);
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 80% 10%, rgba(76,97,255,.12), transparent 30%),
+        radial-gradient(circle at 10% 60%, rgba(255,135,111,.09), transparent 30%),
+        var(--bg);
+      line-height: 1.45;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      z-index: 999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 24px auto 40px;
+      padding: clamp(20px, 4vw, 54px);
+      background: rgba(250,251,252,.72);
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 38px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .topbar__role {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #101114;
+      box-shadow: 0 0 0 4px rgba(16,17,20,.08);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 1.35fr 1fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 520px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 24%;
+      right: 17%;
+      bottom: 6%;
+      height: 90px;
+      background: radial-gradient(ellipse, rgba(20,24,34,.22), transparent 65%);
+      filter: blur(18px);
+      z-index: 0;
+    }
+
+    .about-column,
+    .identity-column,
+    .portrait-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-title {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .about-title__icon {
+      font-size: 48px;
+      transform: rotate(-12deg);
+      filter: drop-shadow(0 8px 14px rgba(255,150,30,.22));
+    }
+
+    .about-title h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 25px;
+      line-height: .95;
+      letter-spacing: -.6px;
+    }
+
+    .glass-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.82);
+      box-shadow: 0 15px 35px rgba(22,28,42,.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .about-card {
+      border-radius: 0 0 32px 32px;
+      padding: 26px 24px 30px;
+      font-size: 14px;
+      color: #35383e;
+      max-width: 310px;
+    }
+
+    .about-card strong {
+      color: var(--text);
+    }
+
+    .trait-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 26px;
+      max-width: 330px;
+    }
+
+    .trait {
+      min-height: 78px;
+      padding: 13px;
+      border-radius: 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .trait:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 28px rgba(25,29,40,.13);
+    }
+
+    .trait:nth-child(1) { background: var(--coral); }
+    .trait:nth-child(2) { background: rgba(255,255,255,.8); }
+    .trait:nth-child(3) { background: var(--dark); color: #fff; }
+    .trait:nth-child(4) { background: var(--purple); color: #fff; }
+    .trait:nth-child(5) { background: #d9dcdf; }
+
+    .trait__icon {
+      font-size: 20px;
+    }
+
+    .portrait-wrap {
+      min-height: 500px;
+      display: grid;
+      place-items: end center;
+    }
+
+    .big-letter {
+      position: absolute;
+      inset: 24px 0 auto 0;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(310px, 31vw, 470px);
+      font-weight: 900;
+      line-height: .78;
+      color: #232427;
+      letter-spacing: -40px;
+      z-index: -1;
+      user-select: none;
+    }
+
+    .portrait-card {
+      width: min(100%, 390px);
+      height: 480px;
+      position: relative;
+      display: grid;
+      place-items: end center;
+      overflow: hidden;
+    }
+
+    .portrait-placeholder {
+      width: 88%;
+      height: 91%;
+      border-radius: 42% 42% 20% 20% / 30% 30% 18% 18%;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.22), transparent 40%),
+        linear-gradient(180deg, #3449a8 0%, #263a90 42%, #161b33 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Thay ảnh thật:
+       1. Đặt ảnh tên "profile.png" cùng thư mục HTML
+       2. Bỏ comment dòng background-image bên dưới
+    */
+    .portrait-placeholder::before {
+      content: "YOUR PHOTO";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.78);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      background:
+        radial-gradient(circle at 50% 26%, rgba(255,255,255,.22), transparent 23%),
+        linear-gradient(180deg, transparent 54%, rgba(9,13,28,.45) 100%);
+      /* background-image: url("profile.png"); */
+      background-size: cover;
+      background-position: center top;
+    }
+
+    .carousel-pill {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 30px rgba(20,25,38,.14);
+    }
+
+    .carousel-pill span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #b6b8bd;
+    }
+
+    .carousel-pill span:first-child {
+      background: #1b1d21;
+    }
+
+    .identity-column {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .identity {
+      padding-left: 6px;
+    }
+
+    .identity__icon {
+      font-size: 42px;
+      margin-bottom: 24px;
+    }
+
+    .identity h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(42px, 5vw, 68px);
+      letter-spacing: -3.2px;
+      line-height: .88;
+      margin-bottom: 16px;
+    }
+
+    .identity p {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .age-card {
+      align-self: flex-end;
+      width: min(100%, 225px);
+      min-height: 205px;
+      border-radius: 32px;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .age-card small {
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .age-ring {
+      width: 116px;
+      height: 116px;
+      border: 18px solid var(--primary);
+      border-right-color: transparent;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transform: rotate(-22deg);
+    }
+
+    .age-ring span {
+      transform: rotate(22deg);
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #f8f9fb;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .section {
+      margin-top: 58px;
+    }
+
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 30px;
+      padding: 4px 16px 7px;
+      border: 2px solid var(--primary);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(27px, 3vw, 38px);
+      font-weight: 700;
+      color: #3345b7;
+      line-height: 1;
+      letter-spacing: -1.5px;
+      text-shadow:
+        2px 0 rgba(244,61,86,.35),
+        -2px 0 rgba(0,190,214,.35);
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border: 2px solid var(--primary);
+    }
+
+    .section-title::before {
+      top: -6px;
+      left: -6px;
+    }
+
+    .section-title::after {
+      bottom: -6px;
+      right: -6px;
+    }
+
+    .section-title.centered {
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 26px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .timeline-item__year {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .timeline-item__year strong {
+      display: block;
+      color: var(--text);
+      font-size: 22px;
+      margin-top: 4px;
+    }
+
+    .timeline-item h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .software-grid {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(72px, 1fr));
+      gap: 14px;
+      align-items: center;
+    }
+
+    .software-item {
+      aspect-ratio: .82;
+      min-height: 95px;
+      border: 3px solid #17191d;
+      border-radius: 15px 15px 5px 5px;
+      background: rgba(255,255,255,.62);
+      display: grid;
+      place-items: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(20px, 2.3vw, 34px);
+      font-weight: 800;
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .software-item::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 7px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+
+    .software-item:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      background: white;
+    }
+
+    .software-item:hover::after {
+      transform: scaleX(1);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .pinterest-card {
+      min-height: 320px;
+      border-radius: 22px;
+      padding: 28px;
+      background: linear-gradient(155deg, #ff9d2f, #ff6652);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 45px rgba(255,110,70,.22);
+    }
+
+    .pinterest-card .logo {
+      font-size: 40px;
+      font-family: Georgia, serif;
+      font-weight: 700;
+    }
+
+    .pinterest-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 23px;
+      line-height: .92;
+      max-width: 150px;
+    }
+
+    .mini-link {
+      width: fit-content;
+      background: white;
+      color: #3f4248;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: 1.35fr .85fr;
+      grid-template-areas:
+        "email linkedin"
+        "instagram twitter"
+        "behance behance";
+      gap: 18px;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 22px;
+      padding: 23px 26px;
+      box-shadow: 0 14px 34px rgba(25,30,44,.08);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgba(25,30,44,.13);
+    }
+
+    .contact-card h4 {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-card strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      overflow-wrap: anywhere;
+    }
+
+    .email { grid-area: email; }
+    .linkedin { grid-area: linkedin; }
+    .instagram { grid-area: instagram; }
+    .twitter { grid-area: twitter; }
+    .behance {
+      grid-area: behance;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      min-height: 112px;
+      background: linear-gradient(105deg, rgba(105,193,255,.27), rgba(255,255,255,.82));
+    }
+
+    .behance .brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+    }
+
+    .footer {
+      margin-top: 55px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-column {
+        order: 2;
+      }
+
+      .portrait-wrap {
+        order: 1;
+      }
+
+      .identity-column {
+        grid-column: 1 / -1;
+        order: 3;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .software-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .pinterest-card {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(calc(100% - 16px), var(--max-width));
+        margin-top: 8px;
+        border-radius: 24px;
+        padding: 20px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        font-size: 12px;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .portrait-wrap {
+        width: 100%;
+        min-height: 400px;
+      }
+
+      .portrait-card {
+        height: 390px;
+      }
+
+      .big-letter {
+        font-size: 350px;
+      }
+
+      .about-column {
+        width: 100%;
+      }
+
+      .about-card,
+      .trait-grid {
+        max-width: none;
+      }
+
+      .identity-column {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .age-card {
+        align-self: stretch;
+        width: 100%;
+        min-height: 170px;
+      }
+
+      .timeline-grid {
+        grid-template-columns: 1fr;
+        gap: 46px;
+      }
+
+      .software-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .contact-cards {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "email"
+          "linkedin"
+          "instagram"
+          "twitter"
+          "behance";
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .software-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline-item {
+        grid-template-columns: 68px 1fr;
+        gap: 14px;
+      }
+
+      .identity h1 {
+        font-size: 46px;
+      }
+
+      .trait-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div id="currentDate">May 4th, 2026</div>
+      <div class="topbar__role">
+        Front-end Developer / UX/UI Designer
+        <span class="status-dot" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <section class="hero" id="about">
+      <div class="about-column">
+        <div class="about-title">
+          <div class="about-title__icon" aria-hidden="true">🔔</div>
+          <h2>About<br>User</h2>
+        </div>
+
+        <div class="about-card glass-card">
+          Tôi là <strong>Front-end Developer</strong> và
+          <strong>UX/UI Designer</strong> tại Việt Nam, yêu thích việc biến
+          ý tưởng thành những giao diện trực quan, hiện đại và dễ sử dụng.
+          Tôi tập trung vào trải nghiệm người dùng, thiết kế hệ thống và
+          phát triển website responsive.
+        </div>
+
+        <div class="trait-grid">
+          <div class="trait">
+            <span class="trait__icon">🧠</span>
+            <span>Critical Thinking</span>
+          </div>
+          <div class="trait">
+            <span class="trait__icon">🔎</span>
+            <span>Attention to Detail</span>
+          </div>
+          <div class="trait">
+            <span class="trait__icon">◉</span>
+            <span>Visual Aesthetic</span>
+          </div>
+          <div class="trait">
+            <span class="trait__icon">✦</span>
+            <span>Creativity</span>
+          </div>
+          <div class="trait">
+            <span class="trait__icon">▦</span>
+            <span>Organized</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portrait-wrap">
+        <div class="big-letter">C</div>
+        <div class="portrait-card">
+          <div class="portrait-placeholder"></div>
+          <div class="carousel-pill" aria-label="Ảnh đại diện">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="identity-column">
+        <div class="identity">
+          <div class="identity__icon" aria-hidden="true">♙</div>
+          <h1>Nguyen Hong Son<br>Portfolio</h1>
+          <p>Đà Nẵng, Việt Nam</p>
+        </div>
+
+        <div class="age-card glass-card">
+          <small>Years old</small>
+          <div class="age-ring">
+            <span>24</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-grid">
+      <div>
+        <h2 class="section-title">Education</h2>
+        <div class="timeline-list">
+          <article class="timeline-item">
+            <div class="timeline-item__year">2019 -<strong>2023</strong></div>
+            <div>
+              <h3>Information Technology</h3>
+              <p>Tên trường đại học / cao đẳng của bạn</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-item__year">2023 -<strong>Now</strong></div>
+            <div>
+              <h3>UX/UI & Front-end Development</h3>
+              <p>Tự học, khóa học chuyên môn và dự án thực tế</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Organization</h2>
+        <div class="timeline-list">
+          <article class="timeline-item">
+            <div class="timeline-item__year">2023 -<strong>2024</strong></div>
+            <div>
+              <h3>UX/UI Designer</h3>
+              <p>Công ty / tổ chức của bạn</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-item__year">2024 -<strong>Now</strong></div>
+            <div>
+              <h3>Front-end Developer</h3>
+              <p>Thiết kế và phát triển sản phẩm số</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2 class="section-title centered">Software Skills</h2>
+
+      <div class="software-grid">
+        <div class="software-item" title="HTML5">HTML</div>
+        <div class="software-item" title="CSS3">CSS</div>
+        <div class="software-item" title="JavaScript">JS</div>
+        <div class="software-item" title="React">Re</div>
+        <div class="software-item" title="Figma">Fg</div>
+        <div class="software-item" title="Adobe Photoshop">Ps</div>
+        <div class="software-item" title="Adobe Illustrator">Ai</div>
+        <div class="software-item" title="Git">Git</div>
+        <div class="software-item" title="Notion">N</div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-layout">
+        <a class="pinterest-card" href="#" aria-label="Xem dự án khác">
+          <div class="logo">P</div>
+          <h3>Check My Other Projects</h3>
+          <span class="mini-link">yourportfolio.com</span>
+        </a>
+
+        <div class="contact-cards">
+          <a class="contact-card email" href="mailto:hello@example.com">
+            <h4>✉ Email</h4>
+            <strong>hello@example.com</strong>
+          </a>
+
+          <a class="contact-card linkedin" href="#" target="_blank" rel="noreferrer">
+            <h4>in LinkedIn</h4>
+            <strong>Thanh Tuyền</strong>
+          </a>
+
+          <a class="contact-card instagram" href="#" target="_blank" rel="noreferrer">
+            <h4>◎ Instagram</h4>
+            <strong>@yourusername</strong>
+          </a>
+
+          <a class="contact-card twitter" href="#" target="_blank" rel="noreferrer">
+            <h4>𝕏 Twitter / X</h4>
+            <strong>@yourusername</strong>
+          </a>
+
+          <a class="contact-card behance" href="#" target="_blank" rel="noreferrer">
+            <span class="brand">Bē</span>
+            <span>
+              <h4>Behance</h4>
+              <strong>Nguyen Hong Son</strong>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="currentYear"></span> Thanh Tuyền Portfolio</span>
+      <span>Designed & developed with care.</span>
+    </footer>
+  </main>
+
+  <script>
+    // Tự động hiển thị ngày và năm hiện tại.
+    const dateElement = document.getElementById("currentDate");
+    const yearElement = document.getElementById("currentYear");
+    const now = new Date();
+
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    }).format(now);
+
+    dateElement.textContent = formattedDate;
+    yearElement.textContent = now.getFullYear();
+  </script>
+</body>
+</html>

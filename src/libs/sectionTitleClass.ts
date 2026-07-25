@@ -1,0 +1,2 @@
+export const sectionTitleClass =
+  "relative mb-[30px] inline-flex items-center border-2 border-[#3448d9] px-4 pt-1 pb-[7px] text-[#3345b7] font-display text-[clamp(27px,3vw,38px)] font-bold leading-none tracking-[-1.5px] [text-shadow:2px_0_rgba(244,61,86,0.35),-2px_0_rgba(0,190,214,0.35)] before:absolute before:-top-1.5 before:-left-1.5 before:size-2 before:border-2 before:border-[#3448d9] before:bg-white before:content-[''] after:absolute after:-right-1.5 after:-bottom-1.5 after:size-2 after:border-2 after:border-[#3448d9] after:bg-white after:content-['']";
