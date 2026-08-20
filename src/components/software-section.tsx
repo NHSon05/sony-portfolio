@@ -25,6 +25,11 @@ import ZustandLightIcon from "./icons/zustand-light";
 import VscodeDarkIcon from "./icons/vscode-dark";
 import AntigravityDarkIcon from "./icons/antigravity-dark";
 import ReactDarkIcon from "./icons/react-dark";
+import DotnetDarkIcon from "./icons/dotnet-dark";
+import CsharpDarkIcon from "./icons/csharp-dark";
+import AwsDarkIcon from "./icons/aws-dark";
+import GcpDarkIcon from "./icons/gcp-dark";
+import GithubActionsDarkIcon from "./icons/github-actions-dark";
 
 import ScrollReveal from "./scroll-reveal";
 
@@ -43,6 +48,8 @@ export default function SoftwareSection() {
     { title: "Radix UI", Icon: RadixLightIcon },
 
     // Backend-database
+    { title: "C#", Icon: CsharpDarkIcon },
+    { title: ".NET", Icon: DotnetDarkIcon },
     { title: "Node.js", Icon: NodejsDarkIcon },
     { title: "Express", Icon: ExpressDarkIcon },
     { title: "NestJS", Icon: NestDarkIcon },
@@ -54,10 +61,13 @@ export default function SoftwareSection() {
     // Design
     { title: "Figma", Icon: FigmaDarkIcon },
 
-    // Tool
+    // Tool & Cloud
+    { title: "AWS", Icon: AwsDarkIcon },
+    { title: "GCP", Icon: GcpDarkIcon },
     { title: "Docker", Icon: DockerDarkIcon },
     { title: "Git", Icon: GitDarkIcon },
     { title: "GitHub", Icon: GithubDarkIcon },
+    { title: "GitHub Actions", Icon: GithubActionsDarkIcon },
     { title: "Postman", Icon: PostmanDarkIcon },
     { title: "VS Code", Icon: VscodeDarkIcon },
     { title: "Vercel", Icon: VercelLightIcon },

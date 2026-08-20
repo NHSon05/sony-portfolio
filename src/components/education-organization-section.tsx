@@ -12,7 +12,13 @@ export default function EducationOrganizationSection() {
 
   const organization = [
     {
-      year: "9/2026 -",
+      year: "8/2026 -",
+      strong: "Present",
+      title: "Software Engineer",
+      description: "Tekmium Solutions",
+    },
+    {
+      year: "8/2026 -",
       strong: "Present",
       title: "Leader of Software Developer",
       description: "Google Developer Groups on Campus - DUT",

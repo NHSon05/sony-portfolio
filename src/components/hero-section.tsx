@@ -28,79 +28,6 @@ export default function HeroSection() {
     >
       {/* About Column */}
       <ScrollReveal
-        className="relative z-2 max-[980px]:order-2 max-[720px]:w-full"
-        delay={0}
-        xOffset={-50}
-        yOffset={0}
-      >
-        <div className="bg-[rgba(255,255,255,0.72)] border border-[rgba(255,255,255,0.82)] shadow-[0_15px_35px_rgba(22,28,42,0.08)] backdrop-blur-[18px] w-full rounded-4xl px-6 pt-6.5 pb-7.5 text-lg text-[#35383e] max-[720px]:max-w-none">
-          <div className="mb-3 flex justify-start items-center gap-3.5">
-            <div
-              className="-rotate-12 text-5xl drop-shadow-[0_8px_14px_rgba(255,150,30,0.22)]"
-              aria-hidden="true"
-            >
-              🔔
-            </div>
-            <h2 className="font-display text-[25px] leading-[0.95] tracking-[-0.6px] font-bold">
-              About Me
-            </h2>
-          </div>
-          <strong className="text-slate-700 dark:text-slate-300">
-            Full-stack Developer
-          </strong>{" "}
-          based in Vietnam, passionate about building robust back-end systems
-          and crafting intuitive, modern user interfaces. I focus on end-to-end
-          web development, system architecture, and delivering seamless user
-          experiences.
-        </div>
-
-        <div className="mt-6.5 grid grid-cols-2 gap-2.5 max-[720px]:max-w-none">
-          {traits.map((trait) => (
-            <div
-              className={`flex min-h-19.5 w-full flex-col text-slate-700 dark:text-slate-300 justify-between gap-2.5 rounded-[17px] p-3.25 text-[13px] font-bold transition-[transform,box-shadow] duration-250 ease-in-out hover:-translate-y-1.25 hover:shadow-[0_14px_28px_rgba(25,29,40,0.13)] ${trait.className}`}
-              key={trait.label}
-            >
-              <span className="text-xl">{trait.icon}</span>
-              <span>{trait.label}</span>
-            </div>
-          ))}
-        </div>
-      </ScrollReveal>
-
-      {/* Portrait Wrap */}
-      <ScrollReveal
-        className="relative z-2 grid min-h-125 place-items-end justify-items-center max-[980px]:order-1 max-[720px]:min-h-100 max-[720px]:w-full"
-        delay={100}
-        yOffset={40}
-      >
-        <div className="relative grid h-full w-[min(100%,390px)] place-items-end justify-items-center overflow-hidden max-[720px]:h-97.5">
-          <div className="relative h-full w-full overflow-hidden rounded-[42%_42%_20%_20%/30%_30%_18%_18%] bg-transparent shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)]">
-            <Image
-              src={mePhoto}
-              alt="Me"
-              fill
-              priority
-              className="object-cover object-bottom"
-              style={{
-                WebkitMaskImage:
-                  "linear-gradient(to top, transparent 0%, black 20%)",
-                maskImage: "linear-gradient(to top, transparent 0%, black 20%)",
-              }}
-            />
-          </div>
-          <div
-            className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2.5 rounded-full bg-white/76 px-4.5 py-2.75 shadow-[0_14px_30px_rgba(20,25,38,0.14)] backdrop-blur-xl"
-            aria-label="Ảnh đại diện"
-          >
-            <span className="size-2.25 rounded-full bg-[#1b1d21]"></span>
-            <span className="size-2.25 rounded-full bg-[#b6b8bd]"></span>
-            <span className="size-2.25 rounded-full bg-[#b6b8bd]"></span>
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* Identity Column */}
-      <ScrollReveal
         className="relative z-2 flex self-stretch flex-col justify-center max-[980px]:col-span-full max-[980px]:order-3 max-[980px]:flex-row max-[980px]:items-center max-[980px]:justify-between max-[720px]:w-full max-[720px]:flex-col max-[720px]:items-start"
         delay={200}
         xOffset={50}
@@ -116,9 +43,7 @@ export default function HeroSection() {
 
           <h1 className="font-display text-slate-700 dark:text-slate-300 text-[clamp(42px,5vw,68px)] font-bold tracking-[-3.2px] leading-[0.88] max-[430px]:text-[46px]">
             {/* I&apos;m */}
-            Nguyen
-            <br />
-            Hong Son
+            Son Nguyen
           </h1>
           <p className="font-semibold text-[#6c7078]">Da Nang, Viet Nam</p>
 
@@ -167,6 +92,80 @@ export default function HeroSection() {
             </span>
           </div>
         </div> */}
+      </ScrollReveal>
+
+      {/* Portrait Wrap */}
+      <ScrollReveal
+        className="relative z-2 grid min-h-125 place-items-end justify-items-center max-[980px]:order-1 max-[720px]:min-h-100 max-[720px]:w-full"
+        delay={100}
+        yOffset={40}
+      >
+        <div className="relative grid h-full w-[min(100%,390px)] place-items-end justify-items-center overflow-hidden max-[720px]:h-97.5">
+          <div className="relative h-full w-full overflow-hidden rounded-[42%_42%_20%_20%/30%_30%_18%_18%] bg-transparent shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)]">
+            <Image
+              src={mePhoto}
+              alt="Me"
+              fill
+              priority
+              className="object-cover object-bottom"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to top, transparent 0%, black 20%)",
+                maskImage: "linear-gradient(to top, transparent 0%, black 20%)",
+              }}
+            />
+          </div>
+          <div
+            className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2.5 rounded-full bg-white/76 px-4.5 py-2.75 shadow-[0_14px_30px_rgba(20,25,38,0.14)] backdrop-blur-xl"
+            aria-label="Ảnh đại diện"
+          >
+            <span className="size-2.25 rounded-full bg-[#1b1d21]"></span>
+            <span className="size-2.25 rounded-full bg-[#b6b8bd]"></span>
+            <span className="size-2.25 rounded-full bg-[#b6b8bd]"></span>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Identity Column */}
+
+      <ScrollReveal
+        className="relative z-2 max-[980px]:order-2 max-[720px]:w-full"
+        delay={0}
+        xOffset={-50}
+        yOffset={0}
+      >
+        <div className="bg-[rgba(255,255,255,0.72)] border border-[rgba(255,255,255,0.82)] shadow-[0_15px_35px_rgba(22,28,42,0.08)] backdrop-blur-[18px] w-full rounded-4xl px-6 pt-6.5 pb-7.5 text-lg text-[#35383e] max-[720px]:max-w-none">
+          <div className="mb-3 flex justify-start items-center gap-3.5">
+            <div
+              className="-rotate-12 text-5xl drop-shadow-[0_8px_14px_rgba(255,150,30,0.22)]"
+              aria-hidden="true"
+            >
+              🔔
+            </div>
+            <h2 className="font-display text-[25px] leading-[0.95] tracking-[-0.6px] font-bold">
+              About Me
+            </h2>
+          </div>
+          <strong className="text-slate-700 dark:text-slate-300">
+            Full-stack Developer
+          </strong>{" "}
+          based in Vietnam, passionate about building robust back-end systems
+          and crafting intuitive, modern user interfaces. I focus on end-to-end
+          web development, system architecture, and delivering seamless user
+          experiences.
+        </div>
+
+        <div className="mt-6.5 grid grid-cols-2 gap-2.5 max-[720px]:max-w-none">
+          {traits.map((trait) => (
+            <div
+              className={`flex min-h-19.5 w-full flex-col text-slate-700 dark:text-slate-300 justify-between gap-2.5 rounded-[17px] p-3.25 text-[13px] font-bold transition-[transform,box-shadow] duration-250 ease-in-out hover:-translate-y-1.25 hover:shadow-[0_14px_28px_rgba(25,29,40,0.13)] ${trait.className}`}
+              key={trait.label}
+            >
+              <span className="text-xl">{trait.icon}</span>
+              <span>{trait.label}</span>
+            </div>
+          ))}
+        </div>
       </ScrollReveal>
     </section>
   );

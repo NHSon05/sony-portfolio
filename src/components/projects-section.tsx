@@ -91,7 +91,15 @@ export default function ProjectsSection() {
       title: "Localism",
       description:
         "A mobile app connecting international tourists directly with local guides for authentic cultural experiences.",
-      tags: ["figma"],
+      tags: [
+        "NestJS",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Docker",
+        "Socket.IO",
+        "Figma",
+      ],
       link: "https://ln.run/IRQYY",
       image: localism,
     },
